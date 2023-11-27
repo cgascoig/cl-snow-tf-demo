@@ -13,3 +13,19 @@ variable "secret_key" {
 variable "region" {
   type = string
 }
+
+variable "stack_name" {
+  type = string
+}
+
+variable "mso_username" {
+  type = string
+}
+
+variable "mso_password" {
+  type = string
+}
+
+variable "mso_url" {
+  type = string
+}
