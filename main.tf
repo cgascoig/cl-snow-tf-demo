@@ -61,7 +61,7 @@ resource "mso_schema_template_contract" "fe_to_accounts_ctrct" {
   filter_type   = "bothWay"
   scope         = "context"
   filter_relationship {
-    filter_name = "allow-https"
+    filter_name = mso_schema_template_filter_entry.filter_entry.name
   }
   directives = ["none"]
 }
@@ -74,7 +74,7 @@ resource "mso_schema_template_contract" "fe_to_catalogue_ctrct" {
   filter_type   = "bothWay"
   scope         = "context"
   filter_relationship {
-    filter_name = "allow-https"
+    filter_name = mso_schema_template_filter_entry.filter_entry.name
   }
   directives = ["none"]
 }
@@ -87,7 +87,7 @@ resource "mso_schema_template_contract" "fe_to_notifications_ctrct" {
   filter_type   = "bothWay"
   scope         = "context"
   filter_relationship {
-    filter_name = "allow-https"
+    filter_name = mso_schema_template_filter_entry.filter_entry.name
   }
   directives = ["none"]
 }
@@ -144,6 +144,17 @@ resource "mso_schema_template_anp_epg_contract" "fe_to_notifications_ctrct-cons"
   epg_name          = mso_schema_template_anp_epg.front_end_svc.name
   contract_name     = mso_schema_template_contract.fe_to_catalogue_ctrct.contract_name
   relationship_type = "consumer"
+}
+
+resource "mso_schema_template_filter_entry" "filter_entry" {
+  schema_id          = data.mso_schema.prod.id
+  template_name      = mso_schema_template.demo_template.name
+  name               = "allow-https"
+  display_name       = "allow-https"
+  entry_name         = "https"
+  entry_display_name = "https"
+  destination_from   = "443"
+  destination_to     = "443"
 }
 
 
