@@ -133,7 +133,7 @@ resource "mso_schema_template_anp_epg_contract" "fe_to_notifications_ctrct-prov"
   template_name     = mso_schema_template.demo_template.name
   anp_name          = mso_schema_template_anp.anp1.name
   epg_name          = mso_schema_template_anp_epg.notifications_svc.name
-  contract_name     = mso_schema_template_contract.fe_to_catalogue_ctrct.contract_name
+  contract_name     = mso_schema_template_contract.fe_to_notifications_ctrct.contract_name
   relationship_type = "provider"
 }
 
@@ -142,7 +142,7 @@ resource "mso_schema_template_anp_epg_contract" "fe_to_notifications_ctrct-cons"
   template_name     = mso_schema_template.demo_template.name
   anp_name          = mso_schema_template_anp.anp1.name
   epg_name          = mso_schema_template_anp_epg.front_end_svc.name
-  contract_name     = mso_schema_template_contract.fe_to_catalogue_ctrct.contract_name
+  contract_name     = mso_schema_template_contract.fe_to_notifications_ctrct.contract_name
   relationship_type = "consumer"
 }
 
